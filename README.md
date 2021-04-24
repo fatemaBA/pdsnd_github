@@ -7,12 +7,13 @@
 US Bikeshare Data Analysis
 
 ### Description
-This project calculates statistics for US bikeshare data.
+This project calculates statistics for US bikeshare data using python NumPy and Pandas libraries.
 
 ### Files used
-bikeshare.py
-chicago.csv
-new_york_city.csv
-washington.csv
+* bikeshare.py
+* chicago.csv
+* new_york_city.csv
+* washington.csv
 
 ### Credits
+https://www.udacity.com/course/programming-for-data-science-nanodegree--nd104
