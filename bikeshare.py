@@ -18,11 +18,9 @@ def get_filters():
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
-    print('\nHello! Let\'s explore some US bikeshare data!')
 
     # get user input for city (chicago, new york city, washington)
     city = input("\nWould you like to see data for Chicago, New York, or  Washington? Please type out the full city name.\n")
-
     while city.strip().lower() not in CITY_DATA:
         city = input("\nYour choice must be Chicago, New York, or  Washington. Please try again.\n")
 
@@ -32,9 +30,9 @@ def get_filters():
         month = input("\nYour choice must be Jan, Feb, Mar, Apr, May, Jun, or All. Please try again.\n")
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
-    day = input("\nWhich day? Please type type M, Tu, W, Th, F, Sa, Su.\n")
+    day = input("\nWhich day? Please type type M, Tu, W, Th, F, Sa, Su, or All.\n")
     while (day.strip().title() != 'All') == (day.strip().title() not in days):
-        day = input("\nYour choice must be M, Tu, W, Th, F, Sa, Su. Please try again.\n")
+        day = input("\nYour choice must be M, Tu, W, Th, F, Sa, Su or All. Please try again.\n")
 
     print('-'*40)
     return city.strip().lower(), month.strip().title(), day.strip().title()
@@ -168,13 +166,13 @@ def user_stats(df):
 
     # Display counts of user types
     type_count = df['User Type'].value_counts()
-    print('Total Users for Each Type is:\n{}\n'.format(type_count))
+    print('Total Users for Each Type is:\n{}\n'.format(type_count.to_string()))
 
     # Display counts of gender
     #check if the df has gender column
     if 'Gender' in df.columns:
         gender_count = df['Gender'].value_counts()
-        print('Total Users for Each Gender is:\n{}\n'.format(gender_count))
+        print('Total Users for Each Gender is:\n{}\n'.format(gender_count.to_string()))
 
     # Display earliest, most recent, and most common year of birth
     #check if the df has birth year column
@@ -194,7 +192,6 @@ def show_raw_data(df):
 
     index = 0
     last_index = df.shape[0]
-    print(last_index)
     #remove unwanted columns
     df = df.drop(['month', 'day_of_week','hour','Start To End'], axis = 1)
     #check if user wants to see raw data
@@ -219,6 +216,7 @@ def show_raw_data(df):
     print('-'*40)
 
 def main():
+    print('\nHello! Let\'s explore some US bikeshare data!')
     while True:
         city, month, day = get_filters()
         df = load_data(city, month, day)
