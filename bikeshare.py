@@ -1,6 +1,7 @@
 import time
 import pandas as pd
 import numpy as np
+import calendar as cal
 
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york': 'new_york_city.csv',
@@ -85,12 +86,12 @@ def time_stats(df):
     # display the most common month
     common_month = df['month'].mode()[0]
     month_count = df['month'].value_counts()[common_month]
-    print('The Most Common Month is: {}, count: {}\n'.format(months[common_month-1],month_count))
+    print('The Most Common Month is: {}, count: {}\n'.format(cal.month_name[common_month],month_count))
 
     # display the most common day of week
     common_day = df['day_of_week'].mode()[0]
     day_count = df['day_of_week'].value_counts()[common_day]
-    print('The Most Commn Day of Week is: {}, count: {}\n'.format(days[common_day-1],day_count))
+    print('The Most Commn Day of Week is: {}, count: {}\n'.format(cal.day_name[common_day],day_count))
 
 
     # display the most common start hour
